@@ -1,7 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: liferay
+  labels:
+    app.kubernetes.io/instance: liferay-mysql
+  name: liferay-liferay
+  namespace: default
 spec:
   replicas: 1
   selector:
@@ -13,21 +16,29 @@ spec:
         app: liferay
     spec:
       containers:
-        - name: liferay
-          image: liferay/portal:7.4.3.112-ga112
-          ports:
-            - containerPort: 8080
-          env:
+        - env:
             - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_URL
-              value: jdbc:mysql://mysql:3306/liferay?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
+              value: >-
+                jdbc:mysql://mysql:3306/liferay?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
             - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_USERNAME
               value: liferay
             - name: LIFERAY_JDBC_PERIOD_DEFAULT_PERIOD_PASSWORD
               value: liferay
+          image: liferay/portal:7.4.3.112-ga112
+          name: liferay
+          ports:
+            - containerPort: 8080
           resources:
-            requests:
-              memory: "4Gi"
-              cpu: "2000m"
             limits:
-              memory: "2Gi"
-              cpu: "1000m"
+              cpu: 2
+              memory: 4Gi
+            requests:
+              cpu: 1
+              memory: 2Gi
+          readinessProbe:
+            httpGet:
+              path: /o/c/hello
+              port: 8080
+            initialDelaySeconds: 30
+            periodSeconds: 30
+
