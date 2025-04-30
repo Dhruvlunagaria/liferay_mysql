@@ -1,18 +1,21 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: liferay-app
+  name: liferay-mysql
   namespace: argocd
 spec:
   destination:
     namespace: default
     server: https://kubernetes.default.svc
   source:
-    path: .
+    path: ..
     repoURL: https://github.com/Dhruvlunagaria/liferay_mysql.git
     targetRevision: HEAD
+    kustomize:
+      namePrefix: liferay-
   project: default
   syncPolicy:
     automated:
       selfHeal: true
       prune: true
+
