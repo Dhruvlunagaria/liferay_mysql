@@ -8,9 +8,9 @@ spec:
     namespace: default
     server: https://kubernetes.default.svc
   source:
-    path: ..
     repoURL: https://github.com/Dhruvlunagaria/liferay_mysql.git
     targetRevision: HEAD
+    path: liferay-mysql-deploy  # Adjust this path if needed, ensure it contains kustomization.yaml
     kustomize:
       namePrefix: liferay-
   project: default
@@ -18,4 +18,5 @@ spec:
     automated:
       selfHeal: true
       prune: true
+
 
