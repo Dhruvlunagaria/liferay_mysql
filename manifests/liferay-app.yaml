@@ -10,7 +10,7 @@ spec:
   source:
     repoURL: https://github.com/Dhruvlunagaria/liferay_mysql.git
     targetRevision: HEAD
-    path: liferay-mysql-deploy  # Adjust this path if needed, ensure it contains kustomization.yaml
+    path: .  # Adjust this path if needed, ensure it contains kustomization.yaml
     kustomize:
       namePrefix: liferay-
   project: default
