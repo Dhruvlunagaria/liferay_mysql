@@ -8,3 +8,6 @@ data:
     jdbc.default.url=jdbc:mysql://mysql:3306/lportal?useUnicode=true&characterEncoding=UTF-8&useFastDateParsing=false
     jdbc.default.username=liferay
     jdbc.default.password=liferay
+
+    web.server.host=liferay-argocd.com
+    web.server.protocol=https
