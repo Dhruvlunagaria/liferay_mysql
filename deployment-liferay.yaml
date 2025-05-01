@@ -21,7 +21,8 @@ spec:
             - containerPort: 8080
           volumeMounts:
             - name: config-volume
-              mountPath: /opt/liferay/osgi/configs
+              mountPath: /opt/liferay/portal-ext.properties
+              subPath: portal-ext.properties
           resources:
             limits:
               memory: "4Gi"
@@ -33,3 +34,4 @@ spec:
         - name: config-volume
           configMap:
             name: liferay-config
+
