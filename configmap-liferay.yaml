@@ -11,3 +11,4 @@ data:
 
     web.server.host=liferay-argocd.com
     web.server.protocol=https
+    virtual.hosts.valid.hosts=localhost,127.0.0.1,liferay-argocd.com,[::1],[0:0:0:0:0:0:0:1]
