@@ -9,6 +9,6 @@ data:
     jdbc.default.username=liferay
     jdbc.default.password=liferay
 
-    web.server.host=liferay-argocd.com
+    web.server.host=liferay-argo.com
     web.server.protocol=https
-    virtual.hosts.valid.hosts=localhost,127.0.0.1,liferayargocd.com,[::1],[0:0:0:0:0:0:0:1]
+    virtual.hosts.valid.hosts=localhost,127.0.0.1,liferay-argo.com,[::1],[0:0:0:0:0:0:0:1]
